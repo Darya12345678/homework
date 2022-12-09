@@ -9,36 +9,36 @@
     # Ввод: 0.001
     # Вывод: 3.141
 
-# d = float(input('Введите d: '))
-# res = d
-# cur = 0
-# x = 1
+d = float(input('Введите d: '))
+res = d
+cur = 0
+x = 1
 
-# while x > 0:
-#    r = res * 10
-#    x = (1 - (res * 10))
-#    cur = cur + 1
-#    res = r
+while x > 0:
+   r = res * 10
+   x = (1 - (res * 10))
+   cur = cur + 1
+   res = r
 
-# import math
-# a = math.pi
-# n1, n2 = str(a).split('.')
-# print(float(f'{n1}.{n2[:cur]}'))
+import math
+a = math.pi
+n1, n2 = str(a).split('.')
+print(float(f'{n1}.{n2[:cur]}'))
 
 # Задайте натуральное число N. Напишите программу, которая составит список простых множителей числа N.
  
-# m = int(input('Введите натуральное число N: '))
-# n = m
-# div = 2
-# list = []
-# while n > 1:
-#     if n % div == 0:
-#         list.append(div)
-#         n = n // div
-#     else:
-#         div += 1
+m = int(input('Введите натуральное число N: '))
+n = m
+div = 2
+list = []
+while n > 1:
+    if n % div == 0:
+        list.append(div)
+        n = n // div
+    else:
+        div += 1
 
-# print('Список простых множителей числа {} : {} '.format(m, list))
+print('Список простых множителей числа {} : {} '.format(m, list))
 
 
 # Задайте последовательность чисел. Напишите программу,
@@ -46,13 +46,13 @@
 # Ввод: [1, 1, 2, 3, 4, 4, 4]
 # Вывод: [2, 3]
 
-# a = [1,1,2,3,4,4,4]
-# r = []
-# for i in a:
-#    if a.count(i) == 1:
-#      r.append(i) 
+a = [1,1,2,3,4,4,4]
+r = []
+for i in a:
+   if a.count(i) == 1:
+     r.append(i) 
 
-# print(r)
+print(r)
 
 
 
@@ -60,21 +60,21 @@
 # Сформировать случайным образом список коэффициентов (значения от 0 до 100) 
 # многочлена и записать в файл многочлен степени k.
  
-# from random import randint
-# k = int(input('Введите натуральную степень k:'))
-# first_koef = [randint(1,100)]
-# list_koeff = [randint(0,100) for i in range(k)]+ first_koef
+from random import randint
+k = int(input('Введите натуральную степень k:'))
+first_koef = [randint(1,100)]
+list_koeff = [randint(0,100) for i in range(k)]+ first_koef
 
-# pol ='+'.join([f'{(j,"")[j==1]}*x^{i}' for i, j in enumerate(list_koeff) if j][::-1])                                                      
-# pol=pol.replace('x^1+', 'x+')
-# pol=pol.replace('x^0', '=0')
-# pol = pol.replace('*=0','=0')
+pol ='+'.join([f'{(j,"")[j==1]}*x^{i}' for i, j in enumerate(list_koeff) if j][::-1])                                                      
+pol=pol.replace('x^1+', 'x+')
+pol=pol.replace('x^0', '=0')
+pol = pol.replace('*=0','=0')
 
-# print(pol)
+print(pol)
 
-# data = open('file.txt', 'w')
-# data.writelines (pol)
-# data.close()
+data = open('file.txt', 'w')
+data.writelines (pol)
+data.close()
  
 
 
@@ -85,30 +85,28 @@
 # Задача - сформировать файл, содержащий сумму многочленов 
 # (складываются числа, у которых "х" в одинаковых степенях). 
 # Пример того, что будет в итоговом файле: 8*(x**4) + 9*(x**3) + 1*(x**2) + 5*x + 4 = 0
+     # продублирую предыдущее задание, для записи данных во второй файл
+from random import randint
+k = int(input('Введите натуральную степень k:'))
+first_koef = [randint(1,100)]
+list_koeff = [randint(0,100) for i in range(k)]+ first_koef
 
-# from random import randint
-# k = int(input('Введите натуральную степень k:'))
-# first_koef = [randint(1,100)]
-# list_koeff = [randint(0,100) for i in range(k)]+ first_koef
+pol ='+'.join([f'{(j,"")[j==1]}*x^{i}' for i, j in enumerate(list_koeff) if j][::-1])                                                      
+pol=pol.replace('x^1+', 'x+')
+pol=pol.replace('x^0', '=0')
+pol = pol.replace('*=0','=0')
 
-# pol ='+'.join([f'{(j,"")[j==1]}*x^{i}' for i, j in enumerate(list_koeff) if j][::-1])                                                      
-# pol=pol.replace('x^1+', 'x+')
-# pol=pol.replace('x^0', '=0')
-# pol = pol.replace('*=0','=0')
-
- 
-# y = pol
-# print(y)
-# data = open('file1.txt', 'w')
-# data.writelines (y)
-# data.close()
+  #запись данных во второй файл
+y = pol
+print(y)
+data = open('file1.txt', 'w')
+data.writelines (y)
+data.close()
 
 data = open('file.txt', 'r')
 for line in data:
     text = line
 data.close()
-
-
 
 data = open('file1.txt', 'r')
 for i in data:
@@ -118,14 +116,11 @@ data.close()
 list = text.replace('+','*')
 list = list.replace('=0','*')
 
-
 list1 = text1.replace('+','*')
 list1 = list1.replace('=0','*')
 
-
 list = list.split('*')
 list1 = list1.split('*')
-print(list,list1)
 
 n = []
 for i, k  in enumerate(list):
@@ -139,12 +134,10 @@ nul = ['=0']
 string = n + nul         
 string = ','.join(string)    
  
- 
 
 string = string.replace(',','+')
 string = string.replace('*+','')
 
-print(string) 
 
 data = open('file2.txt', 'w')
 data.writelines(string)
